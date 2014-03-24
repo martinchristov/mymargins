@@ -242,6 +242,20 @@ module.exports = function (grunt) {
             }
         },
 
+        //webfont generator
+        webfont:{
+            icons:{
+                src:'app/images/svg/*.svg',
+                dest:'app/fonts',
+                options:{
+                    stylesheet:'scss',
+                    engine:'node',
+                    relativeFontPath:'../fonts/'
+                }
+            }
+
+        },
+
         svgmin: {
             dist: {
                 files: [{

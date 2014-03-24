@@ -1,0 +1,74 @@
+// bower:scss
+// endbower
+
+@import "compass/reset";
+@import "compass/css3/";
+
+//colors
+$bg:#fff;
+$bgh:#f9f9f9;
+
+$blue:#429bb0;
+$blue-lite:#b4e1f0;
+
+$grey-dark:#424242;
+
+$green:#71b042;
+$green-dark:#559228;
+
+$brand-color:$blue;
+$text-color:$grey-dark;
+
+
+body {
+    background: #fafafa;
+    font-family: Lato, Helvetica, Arial, sans-serif;
+    color: $text-color;
+}
+
+.clearfix{
+    width: 100%;clear:both;
+}
+@mixin unselectable{
+    -webkit-user-select: none; /* Chrome/Safari */        
+    -moz-user-select: none; /* Firefox */
+    -ms-user-select: none; /* IE10+ */
+    -o-user-select: none;
+    user-select: none;
+}
+
+button,.btn{
+	width:auto;
+	border:0 none;
+	margin:0;
+	padding:14px 0;
+	background:transparent;
+	overflow:visible;
+	text-align: center;
+	font-weight: bold;
+	font-size: 20px;
+	text-transform: uppercase;
+	border-radius: 4px;
+	box-sizing:border-box;
+	@include unselectable;
+	&.green{
+		background:$green;
+		color: #fff;
+		box-shadow:0 4px 0 $green-dark;
+		border:1px solid $green;
+		@include transition(all .15s);
+		&:hover{
+			border:1px solid $green-dark;
+		}
+		&:active{
+			box-shadow: 0 1px 0 $green-dark;
+			@include transform(translateY(3px));
+		}
+	}
+}
+
+
+
+@import "view/landing.scss";
+@import "view/home.scss";
+@import "view/read.scss";

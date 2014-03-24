@@ -1,0 +1,33 @@
+#landing{
+	width: 100%;
+	height: 100%;
+	position: relative;
+	background:url(../images/bookshelf.jpg);
+	.sidebar{
+		width: 236px;
+		padding: 50px;
+		height: 100%;
+		position: absolute;
+		background:#f9f9f9;
+		left: 0px;
+		.logo{
+			margin-top: -30px;
+			margin-left: -16px;
+			width: 250px;
+		}
+		h1{
+			color: #424242;
+			font-size: 20px;
+			font-weight: 300;
+			margin: 20px 0;
+			line-height: 28px;
+		}
+		.alpha{
+			font-size: 16px;
+			color: #7d7b7b;
+			text-align: center;
+			padding: 10px;
+			margin-top: 15px;
+		}
+	}
+}
