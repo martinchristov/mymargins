@@ -1,14 +1,41 @@
 <div id="landing" height100>
 	<div class="sidebar">
-		<img class="logo" src="images/logo.svg" alt="">
-		<div ng-hide="step2">
+		<div class="nameinlogo" ng-bind="logoname">
+			my
+		</div>
+		<img class="logo" src="images/logo-nomy.svg" alt="">
+		<div class="step1" ng-hide="step2">
 			<h1>Write in the margins of any document on any device and collaborate with ease.</h1>
-			<div class="green btn">try it now</div>
+			<div class="green btn" hm-tap="try()">try it now</div>
 			<p class="alpha">just keep in mind that we are very, very alpha</p>
 		</div>
-		<div ng-show="step2">
-			
+		<div class="step2">
+			<div class="ani one" ng-show="step2">Hi!</div>
+			<div class="ani two" ng-show="step2">We’re excited that you’re trying this!</div>
+			<div class="ani three" ng-show="step2">
+				May we have your name?
+				<br>
+				<input type="text" ng-change="typingName()" ng-model="name">
+			</div>
+
+			<div class="ani four" ng-show="step2&&name.length>1">
+				<span id="signinButton">
+				  <span
+				    class="g-signin"
+				    data-callback="signinCallback"
+				    data-clientid="420366735323.apps.googleusercontent.com"
+				    data-cookiepolicy="single_host_origin"
+				    data-requestvisibleactions="http://schemas.google.com/AddActivity"
+				    data-scope="https://www.googleapis.com/auth/plus.login">
+				  </span>
+				</span>
+
+				<div class="fblogin btn" fblogin><span class="icon icon_fb"></span>Sign in</div>
+			</div>
 		</div>
 		
+	</div>
+	<div class="video">
+		<div class="play icon icon_play"></div>
 	</div>
 </div>

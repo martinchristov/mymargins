@@ -33,7 +33,7 @@ module.exports = function (grunt) {
             },
             js: {
                 files: ['<%= config.app %>/scripts/{,*/}*.js'],
-                tasks: ['jshint'],
+                tasks: [],
                 options: {
                     livereload: true
                 }
@@ -144,6 +144,7 @@ module.exports = function (grunt) {
         compass: {
             options: {
                 sassDir: '<%= config.app %>/styles',
+                specify: '<%= config.app %>/styles/app.scss',
                 cssDir: '.tmp/styles',
                 generatedImagesDir: '.tmp/images/generated',
                 imagesDir: '<%= config.app %>/images',

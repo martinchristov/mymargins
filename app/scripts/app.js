@@ -1,7 +1,10 @@
 'use strict';
+var angular;
 
 angular.module('margins',[
 		'ngRoute',
+		'ngAnimate',
+		'hmTouchEvents',
 		'margins.services',
 		'margins.controllers',
 		'margins.directives'
