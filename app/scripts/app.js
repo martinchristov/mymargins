@@ -9,7 +9,7 @@ angular.module('margins',[
 		'margins.controllers',
 		'margins.directives'
 	])
-	.config(['$routeProvider', function($routeProvider){
+	.config(['$routeProvider', '$httpProvider', function($routeProvider, $httpProvider){
 		$routeProvider
 			.when('/landing', {controller:'Landing', templateUrl:'view/landing.html'})
 			.when('/home', {controller:'Home', templateUrl:'view/home.html'})

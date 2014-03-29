@@ -16,12 +16,14 @@ angular.module('margins.directives',[])
 		return {
 			restrict: 'A',
 			link: function ($scope, el, attrs) {
+				
+				setTimeout(function(){
+					User.loginFb(FB.getAccessToken());
+				},500);
 				el.on('click',function(){
 					if(FB.getAccessToken()){
 						User.loginFb(FB.getAccessToken())
-	                    .success(function(d){
-                            
-                        });
+	                    
 					}
 					else {
 						FB.login(function (response) {
