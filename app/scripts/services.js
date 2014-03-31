@@ -1,43 +1,56 @@
 'use strict';
 angular.module('margins.services',[])
 	.service('API', ['$http', function ($http) {
-		var api = {},
-			apiUrl = 'http://mymargins.herokuapp.com/api';
-		api.get = function(action){
-			$http.get(apiUrl+action)
-			// return $http.jsonp(apiUrl+action);
-			// return $http.get(apiUrl+action);
+		var that=this;
+		this.apiUrl = 'http://mymargins.herokuapp.com/api';
+
+		this.token = localStorage.token || null;
+
+		this.get = function(action){
+			$http.get(this.apiUrl+action)
 		}
-		api.put = function(action,data,callb){
-			$http({
+		this.put = function(action,data,callb){
+			return $http({
 				method:'post',
 				url:apiUrl+action,
-				// url:'http://gymrealm.com/something',
 				data:data,
-				// withCredentials: true,
-		        headers: {
-                    'Content-Type': 'application/json; charset=utf-8'
-		        }
+		        headers: headers({
+                    'Content-Type': 'application/json'
+		        })
 			});
 		}
+		this.setToken = function(token){
+			localStorage.token = token;
+			this.token = token;
+		}
+		this.isAuth = function(){
+			if(this.token)return true;
+			else return false;
+		}
 
-		//backend mockery
-		// $httpBackend.whenGET(apiUrl+'/login/fb/').respond(function(method, url, data){
-		//   return {success:true};
-		// });
-
-		return api;
+		function headers(obj){
+			if(!obj)obj={};
+			if(that.isAuth()){
+				obj.token=that.token;
+			}
+			return obj;
+		}
 	}])
 	.service('User', ['API', function (API) {
-		var user = {};
 
-		user.isAuth = true;
+		this.isAuth = function(){
+			return API.isAuth();
+		};
 
-		user.loginFb = function(token){
-			API.put('/me/', {'facebook_token':token}, function(d){
-				
+		this.loginFb = function(fbtoken){
+			return API.put('/me/', {'facebookToken':fbtoken})
+			.success(function(token){
+				API.setToken(token);
 			})
 		}
 
-		return user;
+		this.me = function(){
+			return API.get('/me');
+		}
+
 	}]);

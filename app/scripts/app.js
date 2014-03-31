@@ -4,6 +4,7 @@ var angular;
 angular.module('margins',[
 		'ngRoute',
 		'ngAnimate',
+		'angularFileUpload',
 		'hmTouchEvents',
 		'margins.services',
 		'margins.controllers',
@@ -16,7 +17,8 @@ angular.module('margins',[
 			.when('/read/:docId', {controller:'Read', templateUrl:'view/read.html'});
 		$routeProvider
 			.otherwise({ redirectTo: '/landing' });
-
+			
+		$httpProvider.defaults.useXDomain = true;
 	}]);
 
 angular.module('margins.controllers',[]);

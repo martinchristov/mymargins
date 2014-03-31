@@ -16,30 +16,28 @@ angular.module('margins.directives',[])
 		return {
 			restrict: 'A',
 			link: function ($scope, el, attrs) {
-				
-				setTimeout(function(){
-					User.loginFb(FB.getAccessToken());
-				},500);
 				el.on('click',function(){
+					function login (token) {
+						User.loginFb(token)
+	                    .success(function(d){
+                            if($scope.hasOwnProperty('goHome')){
+                            	$scope.goHome();
+                            }
+                        });
+					}
 					if(FB.getAccessToken()){
-						User.loginFb(FB.getAccessToken())
-	                    
+						login(FB.getAccessToken());
 					}
 					else {
 						FB.login(function (response) {
-							console.log(response);
 			                if (response.status === 'connected') {
 			                    var access_token = response.authResponse.accessToken;
-
-			                    User.loginFb(response.authResponse.accessToken)
-			                    .success(function(d){
-	                                
-	                            });
+			                    login(response.authResponse.accessToken);
 	                        } else {
 			            	    // 
 			                }
 	                             
-	                    });
+	                    }, {scope: 'email,basic_info'});
 					}
 					
 				})

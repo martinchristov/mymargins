@@ -96,6 +96,17 @@
 				margin-top: 15px;
 			}
 		}
+
+		//animations
+		&.ng-hide{
+			@include transform(translateX(-100%));
+		}
+		@include transform(translateX(0%));
+		@include transition(all .5s ease-in-out);
+		&.ng-hide-add,&.ng-hide-add-active,&.ng-hide-remove,&.ng-hide-remove-active{
+			display: block!important;
+			
+		}
 	}
 
 	.video{

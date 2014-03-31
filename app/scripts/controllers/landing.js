@@ -1,6 +1,6 @@
 'use strict';
 angular.module('margins.controllers')
-	.controller('Landing', ['$scope', function ($scope) {
+	.controller('Landing', ['$scope', '$location', 'User', function ($scope, $location, User) {
 		$scope.try = function(){
 			$scope.step2=true;
 			setTimeout(function(){
@@ -16,4 +16,13 @@ angular.module('margins.controllers')
 				$scope.logoname='my';
 			}
 		}
+		$scope.goHome = function(){
+			$scope.hidebar = true;
+			setTimeout(function(){
+				$scope.$apply(function(){
+					$location.path('/home');
+				});
+			},1000);
+		}
+		console.log(User.isAuth());
 	}]);
