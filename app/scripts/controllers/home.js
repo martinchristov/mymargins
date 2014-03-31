@@ -10,7 +10,7 @@ angular.module('margins.controllers')
       			var file = $files[i];
       			$scope.upload = $upload.upload({
         			url: API.apiUrl+'/documents/', //upload.php script, node.js route, or servlet url
-        			// headers: {'header-key': 'header-value'},
+        			headers: {'margins-token': API.token},
         			file: file, // or list of files: $files for html5 only
 				}).progress(function(evt) {
 					console.log('percent: ' + parseInt(100.0 * evt.loaded / evt.total));
