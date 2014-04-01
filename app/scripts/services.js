@@ -12,7 +12,7 @@ angular.module('margins.services',[])
 		this.put = function(action,data,callb){
 			return $http({
 				method:'post',
-				url:apiUrl+action,
+				url:this.apiUrl+action,
 				data:data,
 		        headers: headers({
                     'Content-Type': 'application/json'
@@ -31,7 +31,7 @@ angular.module('margins.services',[])
 		function headers(obj){
 			if(!obj)obj={};
 			if(that.isAuth()){
-				obj.token=that.token;
+				obj['Margins-Token']=that.token;
 			}
 			return obj;
 		}
